@@ -3,9 +3,8 @@ from astropy import units as u
 import pandas as pd
 import splusdata
 
-conn = splusdata.connect('luna.espinosa', '741852963_')
-dir = '/home/luna/Documentos/usp/ic/fabio/'
-fields = pd.read_csv('/home/luna/Documentos/usp/ic/fabio/Sgalaxies.csv')
+conn = splusdata.connect('login', 'password')
+fields = pd.read_csv('Sgalaxies.csv')
 
 for field in fields['NAME']:
     print('Starting ' + f'{field}')
@@ -39,13 +38,13 @@ for field in fields['NAME']:
 
         table = conn.query(query_f)
         print('Got the table!') #astropy.Table
-        table.write(f'{dir}{field}_query.csv', overwrite=True)
+        table.write(f'{field}_query.csv', overwrite=True)
 
         galex = XMatch.query(cat1=table, cat2='vizier:II/335/galex_ais', max_distance=2*u.arcsec, colRA1='RA', colDec1='DEC')
         wise = XMatch.query(cat1=galex, cat2='vizier:II/328/allwise', max_distance=2*u.arcsec, colRA1='RA', colDec1='DEC')
 
 
-        wise.write(f'{dir}{field}_match.csv', overwrite=True)
+        wise.write(f'{field}_match.csv', overwrite=True)
     except:
         print(f"Error on {field}")
         file = open('error.txt', 'a')
