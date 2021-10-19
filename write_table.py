@@ -1,6 +1,6 @@
 # herpich@usp.br - 2020-11013
 
-from astropy.io import fits,ascii
+from astropy.io import ascii
 from astropy.table import Table
 import numpy as np
 
@@ -14,7 +14,7 @@ mags = np.array(list(zip(t['FUVmag'], t['NUVmag'],
                          t['J0410_petro'], t['J0430_petro'], t['g_petro'],
                          t['J0515_petro'], t['r_petro'], t['J0660_petro'],
                          t['i_petro'], t['J0861_petro'], t['z_petro'],
-                         t['Jmag'] + 0.91, t['Hmag'] + 1.39, t['Kmag'] + 1.85,
+                         t['Jmag_1'] + 0.91, t['Hmag_1'] + 1.39, t['Kmag_1'] + 1.85,
                          t['W1mag'] + 2.699, t['W2mag'] + 3.339,
                          t['W3mag'] + 5.174, t['W4mag'] + 6.620
                          )))
@@ -26,7 +26,7 @@ mags_err = np.array(list(zip(t['e_FUVmag'], t['e_NUVmag'],
                              t['e_J0410_petro'], t['e_J0430_petro'], t['e_g_petro'],
                              t['e_J0515_petro'], t['e_r_petro'], t['e_J0660_petro'],
                              t['e_i_petro'], t['e_J0861_petro'], t['e_z_petro'],
-                             t['e_Jmag'], t['e_Hmag'], t['e_Kmag'],
+                             t['e_Jmag_1'], t['e_Hmag_1'], t['e_Kmag_1'],
                              t['e_W1mag'], t['e_W2mag'], t['e_W3mag'], t['e_W4mag']
                              )))
 
